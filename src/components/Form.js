@@ -1,7 +1,7 @@
 const Form = ({ onInputHandler, countries, setCountry }) => {
   return (
     <div className="form">
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form action="/">
         <input
           list="countries"
           placeholder="select a country..."
