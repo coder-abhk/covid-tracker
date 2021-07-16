@@ -3,7 +3,7 @@
 @use "Form.scss";
 
 $dark: #333;
-$font: Arial, Helvetica, sans-serif;
+$font: "Space Grotesk";
 * {
   margin: 0;
   color: $dark;
@@ -19,5 +19,14 @@ $font: Arial, Helvetica, sans-serif;
   img {
     width: 55px;
     margin: 0 11px;
+  }
+}
+
+.footer {
+  width: 100%;
+  background-color: #fafafa;
+  & > p {
+    padding: 1rem;
+    text-align: center;
   }
 }

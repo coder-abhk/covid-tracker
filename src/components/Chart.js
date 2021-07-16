@@ -1,14 +1,17 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
-import { Line } from "react-chartjs-2";
-import { getDailyData } from "../api/_api";
+import { Line, Bar } from "react-chartjs-2";
 
-const Chart = () => {
+const Chart = ({ countryData, country }) => {
+  if (countryData) {
+    var { confirmed, deaths, recovered } = countryData;
+  }
   const [dailyData, setDailyData] = useState([]);
 
   useEffect(() => {
-    (async () => {
-      await getDailyData().then((res) => setDailyData(res.data));
-    })();
+    axios
+      .get("https://covid19.mathdro.id/api/daily")
+      .then((res) => setDailyData(res.data));
   }, []);
 
   const data = {
@@ -29,10 +32,27 @@ const Chart = () => {
       },
     ],
   };
+
+  const barData = confirmed
+    ? {
+        labels: ["confirmed", "recovered", "deaths"],
+        datasets: [
+          {
+            label: "# people",
+            data: [confirmed.value, recovered.value, deaths.value],
+            backgroundColor: [
+              "rgba(0, 132, 255, .7)",
+              "rgba(0, 255, 128, .7)",
+              "rgba(255, 0, 85, .7)",
+            ],
+          },
+        ],
+      }
+    : null;
   return (
     <div className="chart-container">
-      <h2 className="chart-head">Global Cases</h2>
-      {dailyData ? <Line data={data} /> : null}
+      <h2 className="chart-head">Covid-19 Records</h2>
+      {!country ? <Line data={data} /> : <Bar data={barData} />}
     </div>
   );
 };

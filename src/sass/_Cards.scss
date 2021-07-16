@@ -1,8 +1,9 @@
-$dark: #333;
-$blue: #0084ff;
-$green: #00ff80;
-$red: #ff0055;
-$grey: #999;
+$dark: rgb(51, 51, 51);
+$blue: rgb(0, 132, 255);
+$green: rgb(0, 255, 128);
+$red: rgb(255, 0, 85);
+$grey: rgb(153, 153, 153);
+$lightgrey: rgb(250, 250, 250);
 
 @mixin mobile {
   @media (max-width: 571px) {
@@ -17,7 +18,7 @@ $grey: #999;
 }
 
 .cards-container {
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
   display: flex;
   justify-content: space-around;
@@ -33,16 +34,20 @@ $grey: #999;
 }
 
 .card {
-  width: 245px;
+  width: 275px;
   padding: 1rem;
   margin: 1rem;
-  background-color: #fafafa;
+  background-color: $lightgrey;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   border-radius: 7px;
   box-shadow: 2px 3px 15px rgba(0, 0, 0, 0.075);
+  &:hover {
+    cursor: pointer;
+    background-color: lighten($lightgrey, 100%);
+  }
   &-head h3 {
     color: $grey;
   }
@@ -59,6 +64,10 @@ $grey: #999;
 
 .text {
   color: $grey;
+}
+
+.loader {
+  text-align: center;
 }
 
 .card:nth-of-type(1) {
