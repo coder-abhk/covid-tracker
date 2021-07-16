@@ -10,3 +10,14 @@ $font: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
   font-family: $font;
 }
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  img {
+    width: 55px;
+    margin: 0 11px;
+  }
+}

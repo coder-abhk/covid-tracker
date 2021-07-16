@@ -1,19 +1,4 @@
-import { useState, useEffect } from "react";
-import { countriesData } from "../api/_api";
-
-const Form = ({ onInputHandler }) => {
-  const [countries, setCountries] = useState();
-
-  useEffect(
-    () =>
-      (async () => {
-        await countriesData()
-          .then((res) => setCountries(res.data))
-          .catch((err) => console.error(err));
-      })(),
-    []
-  );
-
+const Form = ({ onInputHandler, countries }) => {
   return (
     <div className="form">
       <input

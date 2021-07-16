@@ -1,12 +1,14 @@
-import { onFetchData } from "./api/_api";
+import { onFetchData, countriesData } from "./api/_api";
 import { useEffect, useState } from "react";
 import Card from "./components/Card";
 import Chart from "./components/Chart";
 import Form from "./components/Form";
 import axios from "axios";
+import virusImg from "./assets/img/bacteria.png";
 
 const App = () => {
   const [data, setData] = useState();
+  const [countries, setCountries] = useState();
 
   useEffect(
     () =>
@@ -18,10 +20,22 @@ const App = () => {
     []
   );
 
+  useEffect(
+    () =>
+      (async () => {
+        await countriesData()
+          .then((res) => setCountries(res.data))
+          .catch((err) => console.error(err));
+      })(),
+    []
+  );
+
   const onInputHandler = async (country) => {
     await axios
       .get(`https://covid19.mathdro.id/api/countries/${country}`)
-      .then((res) => setData(res.data))
+      .then((res) => {
+        setData(res.data);
+      })
       .catch((err) => console.error(err));
   };
 
@@ -31,6 +45,9 @@ const App = () => {
 
   return (
     <>
+      <h2 className="header">
+        COVID-19 <img src={virusImg} alt="" /> TRACKER
+      </h2>
       {data ? (
         <div className="cards-container">
           <Card
@@ -55,8 +72,8 @@ const App = () => {
       ) : (
         ""
       )}
-      <Form onInputHandler={onInputHandler} />
-      <Chart />
+      <Form onInputHandler={onInputHandler} countries={countries} />
+      <Chart countryData={data ? data : null} />
     </>
   );
 };

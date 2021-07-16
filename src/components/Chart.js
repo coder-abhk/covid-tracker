@@ -32,7 +32,6 @@ const Chart = () => {
   return (
     <div className="chart-container">
       {dailyData ? <Line data={data} /> : null}
-      {/* <Bar/> */}
     </div>
   );
 };
