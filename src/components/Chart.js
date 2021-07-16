@@ -31,6 +31,7 @@ const Chart = () => {
   };
   return (
     <div className="chart-container">
+      <h2 className="chart-head">Global Cases</h2>
       {dailyData ? <Line data={data} /> : null}
     </div>
   );

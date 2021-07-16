@@ -3,7 +3,7 @@ const Form = ({ onInputHandler, countries }) => {
     <div className="form">
       <input
         list="countries"
-        placeholder="global"
+        placeholder="select a country..."
         onChange={(e) => {
           e.preventDefault();
           if (e.target.value) {
