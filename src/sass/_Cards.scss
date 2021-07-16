@@ -1,0 +1,74 @@
+$dark: #333;
+$blue: #0084ff;
+$green: #00ff80;
+$red: #ff0055;
+$grey: #999;
+
+@mixin mobile {
+  @media (max-width: 571px) {
+    @content;
+  }
+}
+
+@mixin tab {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+.cards-container {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+
+  @include tab() {
+    width: 95%;
+  }
+
+  @include mobile() {
+    width: 90%;
+    flex-direction: column;
+  }
+}
+
+.card {
+  width: 245px;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 7px;
+  box-shadow: 2px 3px 15px rgba(0, 0, 0, 0.075);
+  &-head h3 {
+    color: $grey;
+  }
+
+  &-content p {
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+
+  @include mobile() {
+    width: 90%;
+  }
+}
+
+.text {
+  color: $grey;
+}
+
+.card:nth-of-type(1) {
+  border-bottom: 4px solid $blue;
+}
+
+.card:nth-of-type(2) {
+  border-bottom: 4px solid $green;
+}
+
+.card:nth-of-type(3) {
+  border-bottom: 4px solid $red;
+}

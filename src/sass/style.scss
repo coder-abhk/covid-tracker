@@ -1,0 +1,12 @@
+@use "Cards.scss";
+@use "Chart.scss";
+@use "Form.scss";
+
+$dark: #333;
+$font: Arial, Helvetica, sans-serif;
+* {
+  margin: 0;
+  color: $dark;
+  box-sizing: border-box;
+  font-family: $font;
+}
